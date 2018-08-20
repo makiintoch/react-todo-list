@@ -1,4 +1,6 @@
 .App {
+  width: 500px;
+  margin: 25px auto;
   text-align: center;
 }
 
@@ -9,8 +11,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  padding: 10px 20px;
   color: white;
 }
 
