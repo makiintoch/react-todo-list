@@ -1,0 +1,38 @@
+.todo-list {
+    margin-bottom: 25px;
+}
+.todo-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.todo-list li {
+    padding: 4px 25px;
+    position: relative;
+    font-size: 22px;
+    text-align: left;
+    background: white;
+    border-bottom: 1px solid #a9a9a9;
+}
+.remove-task {
+    margin: 0;
+    width: 35px;
+    height: 35px;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 30px;
+    color: #cc9a9a;
+    cursor: pointer;
+}
+.remove-task:after {
+    content: '×';
+}
+.remove-task:hover {
+    color: #af5b5e;
+}
+.todo-list li:hover .remove-task {
+    display: block;
+}

@@ -8,7 +8,12 @@ const TodoList = props => {
                 {
                     props.todos.map((task, idx) =>
                         {
-                            return <li key={task.id} className={task.complete ? 'task-complete' : ''}>{task.name}</li>
+                            return (
+                                <li key={task.id} className={task.complete ? 'task-complete' : ''}>
+                                    {task.name}
+                                    <span className={'remove-task'}></span>
+                                </li>
+                            );
                         }
                     )
                 }

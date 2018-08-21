@@ -33,11 +33,11 @@ class Todo extends Component {
             todos: todos
         });
     }
-
+    
     render() {
         return (
             <div className="todo">
-                <TodoList {...this.state}/>
+                <TodoList removeTask={this.removeTask} {...this.state}/>
                 <AddTask handleSubmit={this.handleSubmit} {...this.state}/>
             </div>
         );

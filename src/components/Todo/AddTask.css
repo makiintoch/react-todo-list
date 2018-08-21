@@ -1,0 +1,20 @@
+.add-task {
+    margin-bottom: 10px;
+}
+.add-task input[type="text"] {
+    width: 80%;
+    height: 40px;
+    padding: 0 25px;
+    box-sizing: border-box;
+}
+.add-task input[type="submit"] {
+    width: 20%;
+    height: 40px;
+    text-transform: uppercase;
+    color: white;
+    border: 0 none;
+    outline: 0 none;
+    background: #409eff;
+    box-sizing: border-box;
+    cursor: pointer;
+}
