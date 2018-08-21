@@ -6,13 +6,18 @@ import AddTask from './AddTask';
 class Todo extends Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            todos: []
+        }
     }
 
     render() {
+        console.log(this.state.todos);
         return (
             <div className="todo">
                 <TodoList/>
-                <AddTask/>
+                <AddTask {...this.state}/>
             </div>
         );
     }
