@@ -11,7 +11,7 @@ const TodoList = props => {
                             return (
                                 <li key={task.id} className={task.complete ? 'task-complete' : ''}>
                                     {task.name}
-                                    <span className={'remove-task'}></span>
+                                    <span onClick={() => props.removeTask(idx)} className={'remove-task'}></span>
                                 </li>
                             );
                         }

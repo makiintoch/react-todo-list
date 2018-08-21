@@ -12,6 +12,7 @@ class Todo extends Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.removeTask = this.removeTask.bind(this);
     }
 
     handleSubmit(event) {
@@ -19,7 +20,7 @@ class Todo extends Component {
         const inputValue = event.target.querySelector('input[name="task"]');
         const task = inputValue.value;
         const todos = this.state.todos;
-        const id = todos.length + 1;
+        const id = Math.random().toString(36).substr(2, 9);
 
         todos.push({
             id: id,
@@ -33,7 +34,17 @@ class Todo extends Component {
             todos: todos
         });
     }
-    
+
+    removeTask(index) {
+        const todos = this.state.todos;
+
+        todos.splice(index, 1);
+
+        this.setState({
+            todos: todos
+        });
+    }
+
     render() {
         return (
             <div className="todo">
