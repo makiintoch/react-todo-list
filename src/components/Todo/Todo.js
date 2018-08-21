@@ -12,6 +12,7 @@ class Todo extends Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.changeState = this.changeState.bind(this);
         this.removeTask = this.removeTask.bind(this);
     }
 
@@ -35,6 +36,17 @@ class Todo extends Component {
         });
     }
 
+    changeState(index) {
+        const todos = this.state.todos;
+        const complete = todos[index].complete;
+
+        todos[index].complete = !complete;
+
+        this.setState({
+            todos: todos
+        });
+    }
+
     removeTask(index) {
         const todos = this.state.todos;
 
@@ -48,7 +60,7 @@ class Todo extends Component {
     render() {
         return (
             <div className="todo">
-                <TodoList removeTask={this.removeTask} {...this.state}/>
+                <TodoList changeState={this.changeState} removeTask={this.removeTask} {...this.state}/>
                 <AddTask handleSubmit={this.handleSubmit} {...this.state}/>
             </div>
         );

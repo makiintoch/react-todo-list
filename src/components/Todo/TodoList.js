@@ -10,6 +10,7 @@ const TodoList = props => {
                         {
                             return (
                                 <li key={task.id} className={task.complete ? 'task-complete' : ''}>
+                                    <span onClick={() => props.changeState(idx)} className={'change-state'}></span>
                                     {task.name}
                                     <span onClick={() => props.removeTask(idx)} className={'remove-task'}></span>
                                 </li>
