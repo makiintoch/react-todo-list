@@ -13,7 +13,9 @@ class Todo extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.changeState = this.changeState.bind(this);
+        this.canTitleEdit = this.canTitleEdit.bind(this);
         this.removeTask = this.removeTask.bind(this);
+        this.changeTitle = this.changeTitle.bind(this);
     }
 
     handleSubmit(event) {
@@ -26,14 +28,33 @@ class Todo extends Component {
         todos.push({
             id: id,
             name: task,
-            complete: false
+            complete: false,
+            editable: false
         });
 
         inputValue.value = '';
 
-        this.setState({
-            todos: todos
-        });
+        this.setState({todos});
+    }
+
+    changeTitle(event, index) {
+        event.preventDefault();
+        const title = event.target.querySelector('input[name="title"]').value;
+        const todos = this.state.todos;
+
+        todos[index].name = title;
+        todos[index].editable = false;
+
+        this.setState({todos});
+    }
+
+    canTitleEdit(index) {
+        const todos = this.state.todos;
+        const editable = todos[index].editable;
+
+        todos[index].editable = !editable;
+
+        this.setState({todos});
     }
 
     changeState(index) {
@@ -42,9 +63,7 @@ class Todo extends Component {
 
         todos[index].complete = !complete;
 
-        this.setState({
-            todos: todos
-        });
+        this.setState({todos});
     }
 
     removeTask(index) {
@@ -52,15 +71,13 @@ class Todo extends Component {
 
         todos.splice(index, 1);
 
-        this.setState({
-            todos: todos
-        });
+        this.setState({todos});
     }
 
     render() {
         return (
             <div className="todo">
-                <TodoList changeState={this.changeState} removeTask={this.removeTask} {...this.state}/>
+                <TodoList changeState={this.changeState} changeTitle={this.changeTitle} canTitleEdit={this.canTitleEdit} removeTask={this.removeTask} {...this.state}/>
                 <AddTask handleSubmit={this.handleSubmit} {...this.state}/>
             </div>
         );

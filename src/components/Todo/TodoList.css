@@ -20,6 +20,13 @@
 .task-complete .change-state {
     background-color: #a9a9a9;
 }
+.task-name input[name="title"] {
+    width: 90%;
+    height: 35px;
+    padding: 0 5px;
+    font-size: 22px;
+    box-sizing: border-box;
+}
 .change-state {
     width: 22px;
     height: 22px;

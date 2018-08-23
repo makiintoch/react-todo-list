@@ -11,7 +11,11 @@ const TodoList = props => {
                             return (
                                 <li key={task.id} className={task.complete ? 'task-complete' : ''}>
                                     <span onClick={() => props.changeState(idx)} className={'change-state'}></span>
-                                    {task.name}
+                                    <span onDoubleClick={() => props.canTitleEdit(idx)} className={'task-name'}>
+                                        {task.editable
+                                            ? <form onSubmit={event => props.changeTitle(event, idx)}><input name={"title"} type="text" defaultValue={task.name} /></form>
+                                            : task.name}
+                                    </span>
                                     <span onClick={() => props.removeTask(idx)} className={'remove-task'}></span>
                                 </li>
                             );
