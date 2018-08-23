@@ -18,6 +18,18 @@ class Todo extends Component {
         this.changeTitle = this.changeTitle.bind(this);
     }
 
+    componentDidMount() {
+        const todos = JSON.parse(localStorage.getItem('todos'));
+        this.setState({todos: todos});
+        console.log('component did mount', todos);
+    }
+
+    componentWillUpdate() {
+        const todos = this.state.todos;
+        localStorage.setItem('todos', JSON.stringify(todos));
+        console.log('component will update', todos);
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         const inputValue = event.target.querySelector('input[name="task"]');
