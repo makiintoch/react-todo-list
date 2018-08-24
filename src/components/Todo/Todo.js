@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Todo.css';
 import TodoList from './TodoList';
 import AddTask from './AddTask';
+import TaskInfo from './TaskInfo';
 
 class Todo extends Component {
     constructor(props) {
@@ -21,13 +22,11 @@ class Todo extends Component {
     componentDidMount() {
         const todos = JSON.parse(localStorage.getItem('todos'));
         this.setState({todos: todos});
-        console.log('component did mount', todos);
     }
 
     componentWillUpdate() {
         const todos = this.state.todos;
         localStorage.setItem('todos', JSON.stringify(todos));
-        console.log('component will update', todos);
     }
 
     handleSubmit(event) {
@@ -91,6 +90,7 @@ class Todo extends Component {
             <div className="todo">
                 <TodoList changeState={this.changeState} changeTitle={this.changeTitle} canTitleEdit={this.canTitleEdit} removeTask={this.removeTask} {...this.state}/>
                 <AddTask handleSubmit={this.handleSubmit} {...this.state}/>
+                <TaskInfo {...this.state} />
             </div>
         );
     }
